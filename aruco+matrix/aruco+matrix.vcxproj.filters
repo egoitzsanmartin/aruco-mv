@@ -48,8 +48,8 @@
     <ClCompile Include="WriteFiles.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Desktop\tinyxml2-master\tinyxml2.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Archivos de recursos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +68,7 @@
     <ClInclude Include="WriteFiles.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Desktop\tinyxml2-master\tinyxml2.h">
+    <ClInclude Include="tinyxml2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

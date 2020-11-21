@@ -1,8 +1,16 @@
-﻿  WriteFiles.cpp
+﻿  CamCalib.cpp
+  MatrixVisionDevice.cpp
+  Automatically linking with mvDeviceManager.lib
+  Parameters.cpp
+  program.cpp
+  Automatically linking with mvDeviceManager.lib
+  tinyxml2.cpp
+  UDP_Server.cpp
+  WriteFiles.cpp
   Generando código
-  96 of 4154 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    125 functions had inline decision re-evaluated but remain unchanged
+  2115 of 4154 functions (50.9%) were compiled, the rest were copied from previous compilation.
+    13 functions were new in current compilation
+    12 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
-  aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-detector-git\x64\Release\aruco+matrix.exe
-  aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-detector-git\x64\Release\aruco+matrix.pdb (Full PDB)
+  aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-mv\x64\Release\aruco+matrix.exe
+  aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-mv\x64\Release\aruco+matrix.pdb (Full PDB)
