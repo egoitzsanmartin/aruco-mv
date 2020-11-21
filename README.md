@@ -1,1 +1,1 @@
-aruco-mv
+aruco-detector-git

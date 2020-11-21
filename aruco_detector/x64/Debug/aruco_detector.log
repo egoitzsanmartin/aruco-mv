@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\Aita\source\repos\aruco_detector\aruco_detector\Source.cpp(61,109): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\Aita\source\repos\aruco_detector\aruco_detector\Source.cpp(65,104): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  aruco_detector.vcxproj -> C:\Users\Aita\source\repos\aruco_detector\x64\Debug\aruco_detector.exe

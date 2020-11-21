@@ -1,0 +1,4 @@
+﻿  MatrixVisionDevice.cpp
+  Automatically linking with mvDeviceManager.lib
+C:\Users\Aita\source\repos\aruco_detector\MVDevice_Capture\MatrixVisionDevice.cpp(35,52): warning C4101: 'e': variable local sin referencia
+  MVDevice_Capture.vcxproj -> C:\Users\Aita\source\repos\aruco_detector\x64\Debug\MVDevice_Capture.exe

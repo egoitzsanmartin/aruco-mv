@@ -1,0 +1,7 @@
+﻿  UDP_Server.cpp
+C:\Users\Aita\source\repos\aruco_detector\UDP_Server\UDP_Server.cpp(12,1): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  Generando código
+  Previous IPDB not found, fall back to full compilation.
+  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  UDP_Server.vcxproj -> C:\Users\Aita\source\repos\aruco_detector\x64\Release\UDP_Server.exe
