@@ -3,11 +3,13 @@
 #include "UDP_Server.h"
 #include "Parameters.h"
 #include "WriteFiles.h"
+#include <thread>
+#include <list>
 
 using namespace cv;
 using namespace std;
 
-void runProgram(mvIMPACT::acquire::Device* pDev);
+void runProgram(mvIMPACT::acquire::Device* pDev, int n);
 
 int waitTime = 1; // 1 milisecond
 bool display = true;  // to activate/deactivate display window
@@ -22,13 +24,19 @@ int main() {
         cout << "No device found! Unable to continue!" << endl;
         cin.get(); //wait for any key press
     }
-    mvIMPACT::acquire::Device* pDev = getDeviceFromUserInput(devMgr, isDeviceSupportedBySample);
-    initializeDevice(pDev);
-
-    runProgram(pDev);
+	mvIMPACT::acquire::Device* pDev[6];
+	std::list<std::thread> threads = {};
+	for (int i = 0; i < devMgr.deviceCount(); i++) {
+		pDev[i] = getDeviceFromUserInput(devMgr, isDeviceSupportedBySample);
+		initializeDevice(pDev[i]);
+		threads.emplace_back(std::thread(runProgram, pDev[i], i));
+	}
+	for (auto& t : threads) {
+		t.join();
+	}
 }
 
-void runProgram(mvIMPACT::acquire::Device* pDev) {
+void runProgram(mvIMPACT::acquire::Device* pDev, int n) {
     ofstream allOutfile;
     allOutfile.open("D:/robotica/aruco/pose.txt");
     helper::RequestProvider requestProvider(pDev);
@@ -65,32 +73,35 @@ void runProgram(mvIMPACT::acquire::Device* pDev) {
             cv::Rodrigues(rvecs, m33);
             // Degree_euler = m33 * 180 / CV_PI;
 
-            if (display) {
-                for (int i = 0; i < markerIds.size(); i++) {
-                    cv::aruco::drawAxis(outputImage, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 25);
-                    
-                    //std::cout << "r(euler): " << Degree_euler << " s\n";
-                    std::cout << "r: " << m33 << " s\n";
-                    std::cout << "t: " << tvecs[i] << " s\n";
+        
+            for (int i = 0; i < markerIds.size(); i++) {
+				if (display) {
+					cv::aruco::drawAxis(outputImage, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 25);
+				}
+					//std::cout << "r(euler): " << Degree_euler << " s\n";
+					std::cout << "r: " << m33 << " s\n";
+					std::cout << "t: " << tvecs[i] << " s\n";
 
-                    if (writeInFile) {
-                        getRobotPose(&allOutfile);
-                        writeArucoPoseInFile(rvecs[i], tvecs[i], outputImage, &allOutfile);
-                    }
-                }
-            }
+					if (writeInFile) {
+						getRobotPose(&allOutfile);
+						writeArucoPoseInFile(rvecs[i], tvecs[i], outputImage, &allOutfile);
+					}
+				}
 
             auto finish = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> elapsed = finish - start;
             std::cout << "Capture: " << elapsed.count() << " s\n";
         }
-        if (display) {
-            namedWindow("Display window", WINDOW_NORMAL);
-            imshow("Display window", outputImage);
-            char key = (char)cv::waitKey(waitTime);
-            if (key == 27)
-                break;
-        }
+		if (display) {
+			std::string winname = "Display Window ";
+			winname += std::to_string(n);
+			namedWindow(winname, WINDOW_NORMAL);
+			imshow(winname, outputImage);
+			char key = (char)cv::waitKey(waitTime);
+			if (key == 27)
+				break;
+		}
+        
     }
     allOutfile.close();
     requestProvider.acquisitionStop();

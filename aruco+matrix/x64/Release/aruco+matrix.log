@@ -1,16 +1,10 @@
-﻿  CamCalib.cpp
-  MatrixVisionDevice.cpp
+﻿  program.cpp
   Automatically linking with mvDeviceManager.lib
-  Parameters.cpp
-  program.cpp
-  Automatically linking with mvDeviceManager.lib
-  tinyxml2.cpp
-  UDP_Server.cpp
-  WriteFiles.cpp
+program.cpp(29): warning C4018: '<': no coinciden signed/unsigned
   Generando código
-  2115 of 4154 functions (50.9%) were compiled, the rest were copied from previous compilation.
-    13 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+  52 of 4277 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    11 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-mv\x64\Release\aruco+matrix.exe
   aruco+matrix.vcxproj -> C:\Users\Aita\source\repos\aruco-mv\x64\Release\aruco+matrix.pdb (Full PDB)
